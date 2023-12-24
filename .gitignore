@@ -46,6 +46,7 @@ Thumbs.db
 # Eclipse
 .classpath
 .project
+.env
 .settings/
 
 # Node.js dependencies #
