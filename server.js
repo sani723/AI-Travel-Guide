@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
+const axios = require('axios');
 const PORT = process.env.PORT || 3002;
+
+axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.OPENAI_API_KEY}`;
 
 app.use(express.json());
 
