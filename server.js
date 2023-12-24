@@ -14,3 +14,16 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+app.post("/travel-query", async (req, res) => {
+    try {
+        const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+          prompt: req.body.query,
+          max_tokens: 150
+        });
+    
+        res.json(response.data.choices[0].text);
+      } catch (error) {
+        res.status(500).send('Error processing your request');
+      }
+});
