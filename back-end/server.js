@@ -13,7 +13,7 @@ const corsOptions = {
   origin: 'http://localhost:3000/', // Replace with the domain of your frontend app
   optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Virtual Travel Guide Server is running!");
@@ -25,13 +25,14 @@ app.listen(PORT, () => {
 
 app.post("/travel-query", async (req, res) => {
     try {
-        const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+        const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
           prompt: req.body.query,
           max_tokens: 150
         });
     
         res.json(response.data.choices[0].text);
       } catch (error) {
+        console.error('Error:', error.response ? error.response.data : error.message);
         res.status(500).send('Error processing your request');
       }
 });
