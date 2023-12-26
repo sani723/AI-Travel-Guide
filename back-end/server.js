@@ -43,7 +43,7 @@ app.post("/travel-query", async (req, res) => {
 app.post("/dest-coordinates", async (req, res) => {
   try {
       const response = await axios.post(base_url, {
-        prompt: req.body.query,
+        prompt: `Provide the latitude and longitude of ${req.body.query} as numerical values in an array?`,
         max_tokens: 150
       });
   
