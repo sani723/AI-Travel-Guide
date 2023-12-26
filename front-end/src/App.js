@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import AiMap from './components/Map';
+import Search from './components/Search';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
 
   return (
     <div className="App">
+      <AiMap />
+      <Search />
       <h1>Virtual Travel Guide</h1>
       <form onSubmit={handleSubmit}>
         <input 
