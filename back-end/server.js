@@ -5,6 +5,8 @@ const cors = require('cors');
 
 const PORT = process.env.PORT || 3002;
 
+const base_url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
+
 axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.OPENAI_API_KEY}`;
 
 app.use(express.json());
@@ -25,7 +27,7 @@ app.listen(PORT, () => {
 
 app.post("/travel-query", async (req, res) => {
     try {
-        const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
+        const response = await axios.post(base_url, {
           prompt: req.body.query,
           max_tokens: 150
         });
@@ -35,4 +37,19 @@ app.post("/travel-query", async (req, res) => {
         console.error('Error:', error.response ? error.response.data : error.message);
         res.status(500).send('Error processing your request');
       }
+});
+
+// To  get destination coordinates 
+app.post("/dest-coordinates", async (req, res) => {
+  try {
+      const response = await axios.post(base_url, {
+        prompt: req.body.query,
+        max_tokens: 150
+      });
+  
+      res.json(response.data.choices[0].text);
+    } catch (error) {
+      console.error('Error:', error.response ? error.response.data : error.message);
+      res.status(500).send('Error processing your request');
+    }
 });
