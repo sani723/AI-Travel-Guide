@@ -40,12 +40,17 @@ app.post("/travel-query", async (req, res) => {
 });
 
 // To  get destination coordinates 
-app.post("/dest-coordinates", async (req, res) => {
+app.get("/dest-coordinates", async (req, res) => {
   try {
+      const locationName = req.query.location;
       const response = await axios.post(base_url, {
-        prompt: `Provide the latitude and longitude of ${req.body.query} as numerical values in an array?`,
+        prompt: `Provide the latitude and longitude of ${locationName} as numerical values in an array?`,
         max_tokens: 150
       });
+      // const response = await axios.post(base_url, {
+      //   prompt: `Provide the latitude and longitude of ${req.body.query} as numerical values in an array?`,
+      //   max_tokens: 150
+      // });
   
       res.json(response.data.choices[0].text);
     } catch (error) {
