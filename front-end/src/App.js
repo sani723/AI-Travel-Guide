@@ -16,8 +16,11 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      
       const result = await axios.post('http://localhost:3002/travel-query', { query });
       setResponse(result.data);
+      
+      
     } catch (error) {
       console.error('Error fetching travel guide data:', error);
       setResponse('Error fetching response. Please try again.');
@@ -26,8 +29,8 @@ function App() {
 
   return (
     <div className="App">
-      <AiMap />
       <Search />
+      <AiMap />
       <h1>Virtual Travel Guide</h1>
       <form onSubmit={handleSubmit}>
         <input 
