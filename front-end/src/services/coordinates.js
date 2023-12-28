@@ -12,14 +12,6 @@ export const coordinatesApi = createApi({
       getCoordinates: builder.query({
         query: (locationName) => `dest-coordinates?location=${locationName}`,
       }),
-      // getCoordinates: builder.mutation({
-      //   // Use a POST request and send 'locationName' in the body
-      //   query: (locationName) => ({
-      //     url: '/travel-query',
-      //     method: 'POST',
-      //     body: { query: locationName },
-      //   }),
-      // }),
     }),
   })
 

@@ -43,7 +43,7 @@ const AiMap = () => {
 
     return (
         <APIProvider apiKey={process.env.REACT_APP_MAP_API_KEY}>
-            <Map center={position} zoom={10}>
+            <Map center={position} zoom={12}>
                 <Marker position={position} />
             </Map>
         </APIProvider>
