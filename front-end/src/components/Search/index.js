@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import LoadingAnimation from '../Loading';
 import "./index.css";
 
 import { useLazyGetCoordinatesQuery } from "../../services/coordinates";
@@ -35,8 +35,8 @@ const Search = () => {
         <div className="search-wrapper">
             <form onSubmit={handleSubmit}>
                 <input type="text" value={locationName} onChange={handleInputChange} placeholder="Enter Destination" />
+                {isLoading && <LoadingAnimation />}
             </form>
-            {isLoading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
             {/* {data && (
                 <p>Coordinates: Latitude {latitude}, Longitude {longitude}</p>

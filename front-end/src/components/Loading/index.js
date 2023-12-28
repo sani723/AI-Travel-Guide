@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
 import lottie from "lottie-web";
-import { current } from "@reduxjs/toolkit";
+import "./index.css";
 
-const Loader = () => {
+const LoadingAnimation = () => {
 
     const container = useRef(null);
 
@@ -17,9 +17,9 @@ const Loader = () => {
     }, []);
 
     return (
-        <div ref={container} id="loading-container"></div>
+        <div ref={container} id="loading-container" className="loading"></div>
     );
 }
 
 
-export default Loader;
+export default LoadingAnimation;
