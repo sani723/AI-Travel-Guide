@@ -1,8 +1,12 @@
+import { useRef, useEffect } from "react";
 import lottie from "lottie-web";
 
 const Loader = () => {
-    return (
 
+    const container = useRef(null);
+
+    return (
+        <div ref={container} id="loading-container"></div>
     );
 }
 
