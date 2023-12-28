@@ -8,18 +8,6 @@ const AiMap = () => {
 
     const [position, setPosition] = useState({lat: 25.2048, lng: 55.2708});
 
-    // const coordinates = useSelector((state) => state.todos);
-    //const DestCoordinates = useSelector((state) => state);
-    
-
-    // useEffect(() => {
-    //     // Check if DestCoordinates has a value
-    //     if (DestCoordinates) {
-    //       console.log("Coordinates are available:", DestCoordinates.coordinates.queries.data);
-    //     }
-    //   }, [DestCoordinates]); // Dependency array ensures this runs only when DestCoordinates changes
-    
-
     const coordinatesData = useSelector((state) => {
         // Find the latest successful query for the 'getCoordinates' endpoint
         const queries = state.coordinates.queries;
@@ -50,22 +38,7 @@ const AiMap = () => {
         }
       }
 
-      }, [coordinatesData])
-    
-      
-    //   let parsedCoordinates;
-    //   if (coordinatesData) {
-    //     try {
-    //       parsedCoordinates = JSON.parse(coordinatesData);
-
-    //       setPosition({
-    //         lat: parsedCoordinates[0], lng: parsedCoordinates[1]
-    //       });
-
-    //     } catch (error) {
-    //       console.error("Error parsing coordinates data:", error);
-    //     }
-    //   }
+      }, [coordinatesData]);
 
 
     return (
